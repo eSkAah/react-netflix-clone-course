@@ -1,4 +1,5 @@
 # react-netflix-clone-course
+# Allan BREUIL
 
 ## Features
 
