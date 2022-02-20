@@ -1,9 +1,12 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, {useEffect, useState} from 'react';
-import {useAppSelector, useAppDispatch} from "./Redux/hooks";
-import {fetchMovies} from "./Redux/movies.reducer";
-import Header from "./components/Header";
+import {useAppSelector, useAppDispatch} from "./redux/hooks";
+import {fetchMovies} from "./redux/movies.reducer";
+import {Routes, Route, Link} from 'react-router-dom'
+
 import Row from "./components/Row";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
 
 const App = () => {
 
@@ -15,10 +18,14 @@ const App = () => {
         dispatch(fetchMovies());
     }
 
-
     return(
         <>
-            <Row moviesMp={moviesMostPopular} />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/login' element={<Login />} />
+            </Routes>
+
+            <Row moviesMp={moviesMostPopular} title={"Most Popular :"} />
             <button onClick={handleClick}>Fetch</button>
         </>
 

@@ -1,0 +1,56 @@
+.logo {
+    width: 167px;
+    height: 100px;
+    margin-right: 1%;
+    margin-left: 1%
+}
+
+.languages {
+    color: white;
+}
+
+.select-menu {
+    display: flex;
+    align-items: center;
+    border: solid 1px white;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    background-color: #191919;
+    padding: 9px;
+    font-weight:bold;
+}
+
+.select-menu select {
+    background-color: rgba(19, 19, 19, 0.3);
+    color: white;
+    border: 0;
+}
+
+.left {
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+    align-content: center;
+    align-items: center;
+    margin-right: 1%;
+}
+
+.navigation-bar {
+    list-style: none;
+    text-decoration: none;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    width: 33%;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.4s;
+}
+
+a:hover {
+    color: grey;
+}

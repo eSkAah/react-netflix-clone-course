@@ -60,7 +60,6 @@ export const fetchMovies = () => (dispatch:AppDispatch) => {
             .then((res) => {
                 dispatch(setListTopRated(res.data.results))
         })
-
 }
 
 export default moviesSlice.reducer
