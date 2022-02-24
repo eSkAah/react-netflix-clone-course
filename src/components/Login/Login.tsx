@@ -6,18 +6,16 @@ import LoginForm from "./LoginForm";
 
 const Login = () => {
 
+
+
     return (
         <>
             <Navbar />
-            <div className="home-bg">
-                <img src={bg} alt="logo-netflix" />
-            </div>
+                <div className="home-bg">
+                    <img src={bg} alt="logo-netflix" />
+                </div>
             <LoginForm/>
-
         </>
-
-
-
     )
 }
 

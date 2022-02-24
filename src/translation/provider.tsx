@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {FC, Fragment} from 'react';
 import {IntlProvider} from 'react-intl';
 import messages from './messages';
 
@@ -9,14 +9,14 @@ interface Props {
     locale: typeof LOCALES.ENGLISH
 }
 
-const Provider = ({locale = LOCALES.ENGLISH}) => (
+const Provider: FC<Props> = ({children, locale = LOCALES.ENGLISH}) => (
 
     <IntlProvider
         locale={locale}
         textComponent={Fragment}
         messages={messages[locale + '']}
     >
-
+        {children}
     </IntlProvider>
 
 )

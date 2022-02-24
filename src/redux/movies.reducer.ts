@@ -1,5 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from './store';
+import { createSlice } from '@reduxjs/toolkit';
 import axios from "axios";
 import {AppDispatch} from "./store";
 
@@ -36,6 +35,7 @@ const setListPopularState = (state:IMoviesState, action:any) => {
 
 const setListTopRatedState = (state:IMoviesState, action:any) => {
     state.listTopRated = action.payload
+    console.log(action)
 }
 
 export const moviesSlice = createSlice({
@@ -47,8 +47,7 @@ export const moviesSlice = createSlice({
     }
 })
 
-export const { setListPopular } = moviesSlice.actions;
-export const { setListTopRated } = moviesSlice.actions;
+export const { setListPopular, setListTopRated } = moviesSlice.actions;
 
 export const fetchMovies = () => (dispatch:AppDispatch) => {
         axios.get(apiRequests.mostPopularMoviesReq)
