@@ -50,14 +50,14 @@ export const { setListPopular } = moviesSlice.actions;
 export const { setListTopRated } = moviesSlice.actions;
 
 export const fetchMovies = () => (dispatch:AppDispatch) => {
-        axios.get(apiRequests.mostPopularMoviesReq)
-           .then((res) => {
-               dispatch(setListPopular(res.data.results))
+    axios.get(apiRequests.mostPopularMoviesReq)
+        .then((res) => {
+            dispatch(setListPopular(res.data.results))
         })
 
-        axios.get(apiRequests.topRatedMoviesReq)
-            .then((res) => {
-                dispatch(setListTopRated(res.data.results))
+    axios.get(apiRequests.topRatedMoviesReq)
+        .then((res) => {
+            dispatch(setListTopRated(res.data.results))
         })
 }
 

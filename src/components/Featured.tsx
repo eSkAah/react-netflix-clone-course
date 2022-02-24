@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Home/home.css';
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
+
+import { Il8nProvider, LOCALES} from '../translation';
+import translate from '../translation/translate';
+
 
 const Featured = () => {
 
@@ -10,17 +14,22 @@ const Featured = () => {
         color: 'black'
     }
 
-    return(
-        <div className="features-wrapper">
-            <h1 style={{fontSize:"4rem", margin:'0'}}>Films, séries TV et bien plus en illimité.</h1>
-            <h2>Où que vous soyez. Annulez à tout moment.</h2>
-            <h4>Prêt à regarder Netflix ? Saisissez votre adresse e-mail pour vous abonner ou réactiver votre abonnement.</h4>
+    const [currentLanguage, setCurrentLanguage] = useState(LOCALES.FRENCH);
 
-            <div className='features-input'>
-                <TextField  size="medium" style={inputStyle} color="warning" label="Adresse Email" variant='filled' />
-                <Button  variant='contained' color="error">COMMENCER</Button>
+    return(
+        <Il8nProvider locale={currentLanguage}>
+            <div className="features-wrapper">
+                <h1>{translate("featuresH1")}</h1>
+                <h2>{translate("featuresH2")}</h2>
+                <h4>{translate("featuresH4")}</h4>
+
+                <div className='features-input'>
+                    <TextField  size="medium" style={inputStyle} color="warning" label="Adresse Email" variant='filled' />
+                    <Button  variant='contained' color="error">{translate("start")}</Button>
+                </div>
             </div>
-        </div>
+        </Il8nProvider>
+
     )
 }
 

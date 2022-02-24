@@ -3,7 +3,6 @@ import './home.css';
 import Navbar from '../Navbar/Navbar';
 import Featured from '../Featured';
 
-
 /* STYLE */
 import bg from '../../assets/home-background.jpg'
 import CssBaseline from '@mui/material/CssBaseline';
