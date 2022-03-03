@@ -16,16 +16,36 @@ const apiRequests = {
 //PromiseAll() a ajouter
 
 //Definition de l'interface
-interface ILanguage {
-    appLanguage: string;
+interface IUsers {
+    appLanguage: string,
+    userList: any[]
 }
 
-const initialState: ILanguage = {
+const initialState: IUsers = {
     appLanguage:"fr-FR",
+    userList: [
+        {
+            id:0,
+            name: 'John'
+        },
+        {
+            id:1,
+            name: 'Marie'
+        },
+        {
+            id:2,
+            name: 'Morgan'
+        }
+    ]
 }
 
-const setAppLanguageState = (state:ILanguage, action:any) => {
+
+const setAppLanguageState = (state:IUsers, action:any) => {
     state.appLanguage = action.payload;
+}
+
+const setUserListState = (state:IUsers, action:any) => {
+    state.userList = action.payload;
 }
 
 //Definition des setter que tu veux rendre dispo
@@ -33,12 +53,14 @@ export const userSlice = createSlice({
     name:'user',
     initialState,
     reducers: {
-        setAppLanguage: (state, action ) => setAppLanguageState(state, action)
+        setAppLanguage: (state, action ) => setAppLanguageState(state, action),
+        setUserList: (state, action ) => setUserListState(state, action)
+
     }
 })
 
 //Dispatchable
-export const { setAppLanguage } = userSlice.actions;
+export const { setAppLanguage, setUserList } = userSlice.actions;
 
 export default userSlice.reducer
 

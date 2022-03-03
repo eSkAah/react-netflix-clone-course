@@ -51,7 +51,6 @@ const Navbar = () => {
         return () => (window.onscroll = null);
     };
 
-
     return(
         <AppBar style={isScrolled ? appBar : appBarScrolled} position="fixed">
             <Toolbar disableGutters>

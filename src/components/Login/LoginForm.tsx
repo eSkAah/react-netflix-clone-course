@@ -1,16 +1,18 @@
 import React from 'react'
 
+import {Link} from "react-router-dom";
 import './login.css'
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import translate from "../../translation/translate";
 
 const LoginForm = () => {
 
@@ -31,9 +33,7 @@ const LoginForm = () => {
                         alignItems: 'center',
                     }}
                 >
-                    <Typography component="h1" variant="h5">
-                        LOG IN
-                    </Typography>
+                    <Typography component="h1" variant="h5">{translate('signin')}</Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
                             color="info"
@@ -42,7 +42,7 @@ const LoginForm = () => {
                             required
                             fullWidth
                             id="email"
-                            label="Email Address"
+                            label={translate('email')}
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -53,14 +53,14 @@ const LoginForm = () => {
                             required
                             fullWidth
                             name="password"
-                            label="Password"
+                            label={translate('password')}
                             type="password"
                             id="password"
                             autoComplete="current-password"
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" />}
-                            label="Remember me"
+                            label={translate('rememberMe')}
                         />
 
                         <Button
@@ -69,19 +69,20 @@ const LoginForm = () => {
                             color="error"
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
-                        >
-                            Sign In
+                        ><Link to={'/browser'}>
+                            {translate('signin')}
+                        </Link>
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
+                                <MuiLink href="#" variant="body2">
+                                    {translate('forgotPw')}
+                                </MuiLink>
                             </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
+                            <Grid item xs>
+                                <MuiLink href="#" variant="body2">
+                                    {translate('notSignYet')}
+                                </MuiLink>
                             </Grid>
                         </Grid>
                     </Box>

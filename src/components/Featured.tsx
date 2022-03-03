@@ -6,12 +6,10 @@ import translate from '../translation/translate';
 
 const Featured = () => {
 
-
     const inputStyle = {
         backgroundColor: 'white',
         color: 'black'
     }
-
 
     return(
             <div className="features-wrapper">
