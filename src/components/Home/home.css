@@ -1,39 +1,36 @@
-body {
-   overflow: hidden;
-}
 
 .home-bg {
-   position: absolute;
-   top: 0;
-   filter: brightness(35%);
-   width: 100%;
-   height: 100vh;
-   z-index: -1;
+    position: absolute;
+    top: 0;
+    filter: brightness(35%);
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
 }
 
 
 .home-bg img {
-   height: 100vh;
-   width: 100%;
-   object-fit: cover;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
 }
 
 .features-wrapper {
-   display: flex;
-   flex-direction: column;
-   margin: 200px auto auto auto;
-   color: white;
-   text-align: center;
-   align-items: center;
-   width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin: 200px auto auto auto;
+    color: white;
+    text-align: center;
+    align-items: center;
+    width: 45%;
 }
 
 .features-wrapper input {
-   min-width: 400px;
-   max-width: 600px;
+    min-width: 400px;
+    max-width: 600px;
 }
 
 .features-input {
-   display: flex;
+    display: flex;
 }
 

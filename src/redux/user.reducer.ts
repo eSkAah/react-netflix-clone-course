@@ -39,7 +39,6 @@ const initialState: IUsers = {
     ]
 }
 
-
 const setAppLanguageState = (state:IUsers, action:any) => {
     state.appLanguage = action.payload;
 }

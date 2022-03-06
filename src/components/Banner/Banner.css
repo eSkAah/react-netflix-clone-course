@@ -1,0 +1,21 @@
+.banner {
+    color: white;
+    object-fit: contain;
+    height: 650px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.banner_contents {
+    margin-left: 4%;
+    padding-top: 10%;
+}
+
+.banner_title {
+    font-size: 4rem;
+}
+
+.banner_description {
+    width: 36%;
+}

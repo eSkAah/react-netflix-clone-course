@@ -1,30 +1,25 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React, {useEffect, useState} from 'react';
-import {useAppSelector, useAppDispatch} from "./redux/hooks";
-import {fetchMovies} from "./redux/movies.reducer";
-import {Routes, Route} from 'react-router-dom'
-import { Il8nProvider} from './translation';
-import Row from "./components/Row";
+import React from 'react';
+import {useAppSelector} from "./redux/hooks";
+import {Route, Routes} from 'react-router-dom'
+import {Il8nProvider} from './translation';
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Browser from "./components/Browser/Browser";
+import MoviesBrowser from "./components/MoviesBrowser/MoviesBrowser";
 
 const App = () => {
+    
+    const appLanguage = useAppSelector((state) => state.user.appLanguage)
 
-    //Appel des movies dans redux a prendre pour la page principale quand connecté
-    const dispatch = useAppDispatch();
-    const moviesMostPopular = useAppSelector((state) => state.movies.listPopular)
-    const moviesTopRated = useAppSelector((state) => state.movies.listTopRated)
-    const appLanguage = useAppSelector((state) => state.user.appLanguage )
-
-
-    return(
+    return (
         <>
             <Il8nProvider locale={appLanguage}>
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/browser' element={<Browser />} />
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                    <Route path='/browser' element={<Browser/>}/>
+                    <Route path='/movies-browser' element={<MoviesBrowser/>}/>
                 </Routes>
             </Il8nProvider>
         </>

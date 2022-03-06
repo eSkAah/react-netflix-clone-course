@@ -1,12 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-import axios from "axios";
+import {createSlice} from '@reduxjs/toolkit';
 import {AppDispatch} from "./store";
+import axios from "axios";
 
 const apiRequests = {
+    netflixOriginal: `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`,
     mostPopularMoviesReq: `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR&page=1`,
     topRatedMoviesReq: `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`,
-    mostPopularTvReq : `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`,
-    topRatedTvReq : `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+    mostPopularTvReq: `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`,
+    topRatedTvReq: `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
 }
 
 // Var dans le redux loading Boolean
@@ -20,45 +21,118 @@ interface IMovie {
 }
 
 interface IMoviesState {
+    isFetched: boolean,
+    listNetflixOriginal: any[],
     listPopular: any[],
-    listTopRated: any[]
+    listTopRated: any[],
+    listMostPopularTvReq: any[],
+    listTopRatedTvReq: any[],
 }
 
 const initialState: IMoviesState = {
-    listPopular : [],
-    listTopRated: []
+    isFetched: false,
+    listNetflixOriginal: [],
+    listPopular: [],
+    listTopRated: [],
+    listMostPopularTvReq: [],
+    listTopRatedTvReq: []
 }
 
-const setListPopularState = (state:IMoviesState, action:any) => {
+const setListNetflixOriginal = (state: IMoviesState, action: any) => {
+    state.listNetflixOriginal = action.payload
+}
+
+const setListPopularState = (state: IMoviesState, action: any) => {
     state.listPopular = action.payload
 }
 
-const setListTopRatedState = (state:IMoviesState, action:any) => {
+const setListTopRatedState = (state: IMoviesState, action: any) => {
     state.listTopRated = action.payload
-    console.log(action)
 }
 
+const setMostPopularTvState = (state: IMoviesState, action: any) => {
+    state.listMostPopularTvReq = action.payload
+}
+
+const setTopRatedTvState = (state: IMoviesState, action: any) => {
+    state.listTopRatedTvReq = action.payload
+}
+
+const setIsFetchedState = (state: IMoviesState, action: any) => {
+    state.isFetched = action.payload
+}
+
+
 export const moviesSlice = createSlice({
-    name:'movies',
+    name: 'movies',
     initialState,
     reducers: {
-        setListPopular: (state, action ) => setListPopularState(state, action),
-        setListTopRated:(state, action) => setListTopRatedState(state, action)
+        setListOriginal: (state, action) => setListNetflixOriginal(state, action),
+        setListPopular: (state, action) => setListPopularState(state, action),
+        setListTopRated: (state, action) => setListTopRatedState(state, action),
+        setMostPopularTv: (state, action) => setMostPopularTvState(state, action),
+        setTopRatedTvReq: (state, action) => setTopRatedTvState(state, action),
+        setIsFetched: (state, action) => setIsFetchedState(state, action)
     }
 })
 
-export const { setListPopular, setListTopRated } = moviesSlice.actions;
+export const {
+    setListOriginal,
+    setListPopular,
+    setListTopRated,
+    setMostPopularTv,
+    setTopRatedTvReq,
+    setIsFetched
+} = moviesSlice.actions;
 
-export const fetchMovies = () => (dispatch:AppDispatch) => {
-        axios.get(apiRequests.mostPopularMoviesReq)
-           .then((res) => {
-               dispatch(setListPopular(res.data.results))
+export const fetchMovies = () => (dispatch: AppDispatch) => {
+
+    Promise.all([
+        axios.get(apiRequests.netflixOriginal),
+        axios.get(apiRequests.mostPopularMoviesReq),
+        axios.get(apiRequests.topRatedMoviesReq),
+        axios.get(apiRequests.mostPopularTvReq),
+        axios.get(apiRequests.topRatedTvReq),
+
+    ])
+        .then((data) => {
+            //TODO : Faire un Setter qui Set automatiquement les bonnes responses dans le bon Setter*
+            //TODO : Utiliser un setFetched boolean, pour valider que le fetch est fait
+            dispatch(setListOriginal(data[0].data.results));
+            dispatch(setListPopular(data[1].data.results));
+            dispatch(setListTopRated(data[2].data.results));
+            dispatch(setMostPopularTv(data[3].data.results));
+            dispatch(setTopRatedTvReq(data[4].data.results));
         })
+        .then(() => {
+            setTimeout(() => {
+                dispatch(setIsFetched(true))
+            }, 2000);
+        })
+        .catch((e) => {
+            console.log(e);
+        })
+
+
+    /*axios.get(apiRequests.mostPopularMoviesReq)
+        .then((res) => {
+            dispatch(setListPopular(res.data.results))
+        }),
 
         axios.get(apiRequests.topRatedMoviesReq)
             .then((res) => {
                 dispatch(setListTopRated(res.data.results))
-        })
+            }),
+
+        axios.get(apiRequests.mostPopularTvReq)
+            .then((res) => {
+                dispatch(setMostPopularTv(res.data.results))
+            }),
+
+        axios.get(apiRequests.topRatedTvReq)
+            .then((res) => {
+                dispatch(setTopRatedTvReq(res.data.results))
+            })*/
 }
 
 export default moviesSlice.reducer

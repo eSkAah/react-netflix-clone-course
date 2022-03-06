@@ -1,3 +1,25 @@
+body {
+    background-color: #202020;
+}
+
+.notScrolled {
+    background: none !important;
+    border: 0;
+    box-shadow: none;
+    transition: all 0.5s !important;
+    position: relative !important;
+}
+
+.scrolled {
+    background: rgb(20, 20, 20) !important;
+    height: 98px;
+    z-index: 999;
+    box-shadow: none;
+    transition: all 0.5s !important;
+    position: fixed !important;
+}
+
+
 .logo {
     width: 167px;
     height: 100px;
@@ -17,7 +39,7 @@
     font-size: 0.875rem;
     background-color: #191919;
     padding: 9px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .select-menu select {

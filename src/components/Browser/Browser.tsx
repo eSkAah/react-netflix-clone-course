@@ -9,9 +9,7 @@ const Browser = () => {
 
     const dispatch = useAppDispatch();
     const userList = useAppSelector((state) => state.user.userList);
-
-    console.log(userList);
-
+    
     return(
         <>
             <Navbar />
