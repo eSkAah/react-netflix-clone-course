@@ -1,0 +1,33 @@
+.avatar {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+}
+
+span {
+    color: grey;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.user img:hover {
+    border: 5px solid lightgrey;
+}
+
+.user img:hover ~ span {
+    color: white;
+}
+
+.add img:hover {
+    background: lightgrey;
+}
+
+
+.profile_name {
+    color: #808080;
+    margin-top: .6em;
+    font-weight: lighter;
+    line-height: 1.2em;
+}

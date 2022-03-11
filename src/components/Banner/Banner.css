@@ -1,7 +1,7 @@
 .banner {
     color: white;
     object-fit: contain;
-    height: 650px;
+    height: 900px;
     position: absolute;
     top: 0;
     width: 100%;
@@ -14,8 +14,24 @@
 
 .banner_title {
     font-size: 4rem;
+    font-weight: 800;
+    padding-bottom: 0.3rem;
 }
 
 .banner_description {
     width: 36%;
+    line-height: 1.3;
+    padding-top: 1rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    height: 150px;
+}
+
+.banner_linear_transition {
+    height: 290px;
+    background-image: linear-gradient(
+            180deg,
+            transparent,
+            rgba(35, 35, 35, 0.6), #111
+    );
 }

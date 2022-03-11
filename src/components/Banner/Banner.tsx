@@ -2,6 +2,10 @@ import React, {useEffect, useState} from 'react';
 import Button from "@mui/material/Button";
 import './Banner.css';
 
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import InfoIcon from '@mui/icons-material/Info';
+import Grid from "@mui/material/Grid";
+
 interface IBanner {
     title: string,
     movies: IMovie[]
@@ -12,19 +16,16 @@ interface IMovie {
     title: string,
     name?: string,
     original_name?: string,
-    overview?: string,
+    overview: string,
     poster_path: string,
     backdrop_path: string,
 }
 
-
 const Banner = ({title, movies}: IBanner) => {
 
     const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
-
     const [movie, setMovie] = useState<IMovie>(movies[Math.floor(Math.random() * movies.length - 1)]);
 
-    console.log(movie);
     useEffect(() => {
 
         function fetchData() {
@@ -34,6 +35,10 @@ const Banner = ({title, movies}: IBanner) => {
         fetchData();
 
     }, []);
+
+    function maxDescriptionLength(description: string, length: number) {
+        return description?.length > length ? description.substring(0, length - 1) + "..." : description
+    }
 
     return (
         <div className="banner"
@@ -45,18 +50,41 @@ const Banner = ({title, movies}: IBanner) => {
             <div className="banner_contents">
                 <h1 className="banner_title">{movie?.title || movie?.name || movie?.original_name}</h1>
 
-                <div className="banner_buttons">{/*TODO : Traduire Anglais Francais*/}
-                    <Button style={{
-                        backgroundColor: 'white',
-                        color: 'black'
-                    }}>Lecture</Button>
-                    <Button style={{backgroundColor: 'white'}}>Plus d'infos</Button>
-                </div>
+                <Grid container>
+                    <Grid item xs={5} md={2} lg={1}>
+                        <Button size="large"
+                                startIcon={<PlayArrowIcon/>}
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    fontWeight: 'bold',
+                                    '&:hover': {
+                                        backgroundColor: 'rgb(133, 133, 133)'
+                                    }
+                                }}>Lecture</Button>
+                    </Grid>
+                    <Grid item xs={6} md={3} lg={2}>
+                        <Button size="large"
+                                startIcon={<InfoIcon/>}
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: 'rgb(133, 133, 133)',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    '&:hover': {
+                                        backgroundColor: 'rgb(118, 118, 118)'
+                                    }
+                                }
+                                }>Plus d'infos</Button>
+                    </Grid>
+                </Grid>
 
                 <h3 className="banner_description">
-                    {movie?.overview}
+                    {maxDescriptionLength(movie.overview, 200)}
                 </h3>
             </div>
+            <div className="banner_linear_transition"/>
         </div>
     )
 }

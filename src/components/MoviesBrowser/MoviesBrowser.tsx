@@ -2,8 +2,7 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {fetchMovies} from "../../redux/movies.reducer";
 import './moviesBrowser.css';
-import Row from '../../components/Row'
-import Navbar from "../Navbar/Navbar";
+import Row from '../Rows/Row';
 import Banner from "../Banner/Banner";
 
 
@@ -30,9 +29,7 @@ const MoviesBrowser = () => {
 
     }, []);//Si cette var change, UpdateComponent
 
-
     if (!isFetched) {
-
         return (
             <div>LOADING...</div>
         )
@@ -40,7 +37,6 @@ const MoviesBrowser = () => {
 
     return (
         <>
-            <Navbar/>
             <Banner title="Banner movies"
                     movies={netflixOriginal}/>
             <div className="main-content">

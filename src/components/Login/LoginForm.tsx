@@ -21,10 +21,10 @@ const LoginForm = () => {
         console.log('Logging...')
     }
 
-    return(
+    return (
         <div className='login-form'>
             <Container component="main" maxWidth="xs">
-                <CssBaseline />
+                <CssBaseline/>
                 <Box
                     sx={{
                         marginTop: 8,
@@ -34,7 +34,7 @@ const LoginForm = () => {
                     }}
                 >
                     <Typography component="h1" variant="h5">{translate('signin')}</Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                         <TextField
                             color="info"
                             variant="filled"
@@ -59,7 +59,7 @@ const LoginForm = () => {
                             autoComplete="current-password"
                         />
                         <FormControlLabel
-                            control={<Checkbox value="remember" />}
+                            control={<Checkbox value="remember"/>}
                             label={translate('rememberMe')}
                         />
 
@@ -68,8 +68,8 @@ const LoginForm = () => {
                             fullWidth
                             color="error"
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                        ><Link to={'/browser'}>
+                            sx={{mt: 3, mb: 2}}
+                        ><Link to={'/whoiswatching'}>
                             {translate('signin')}
                         </Link>
                         </Button>
