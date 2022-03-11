@@ -1,7 +1,7 @@
 import './WhoIsWatching.css';
 import React from "react";
 
-import {useAppSelector} from "../../redux/hooks";
+import {useAppSelector} from "../../../redux/hooks";
 import WiwUser from "./WiwUser/WiwUser";
 
 import Grid from '@mui/material/Grid';
@@ -15,6 +15,7 @@ const WhoIsWatching = () => {
     console.log(isLogged);
     console.log(users);
 
+    // @ts-ignore
     return (
         <>
             <Grid container sm={12}
@@ -31,10 +32,9 @@ const WhoIsWatching = () => {
                   justifyContent="center"
                   spacing={2}
             >
-
                 {users.map((user) =>
                     <Grid item xs={10} sm={1}>
-                        <WiwUser name={user.name} picture={user.picture}/>
+                        <WiwUser userInfos={user} members={user.members}/>
                     </Grid>
                 )}
             </Grid>

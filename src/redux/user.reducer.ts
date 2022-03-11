@@ -24,7 +24,14 @@ interface IUser {
     id: number,
     name: string,
     password: string,
-    picture: string
+    email: string,
+    members: IMembers[]
+}
+
+interface IMembers {
+    id: number,
+    name: string,
+    picture: string,
 }
 
 const initialState: IUsers = {
@@ -35,19 +42,73 @@ const initialState: IUsers = {
             id: 0,
             name: 'John',
             password: 'admin',
-            picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png"
+            email: 'John@admin.fr',
+            members: [
+                {
+                    id: 0,
+                    name: "BabyJohn",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+                {
+                    id: 1,
+                    name: "BabyJohnDoe",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+                {
+                    id: 2,
+                    name: "John'sWife",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+
+            ]
         },
         {
             id: 1,
             name: 'Marie',
             password: 'admin',
-            picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/bb3a8833850498.56ba69ac33f26.png"
+            email: 'Marie@admin.fr',
+            members: [
+                {
+                    id: 0,
+                    name: "BabyMarie",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+                {
+                    id: 1,
+                    name: "BabyMarieDoe",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+                {
+                    id: 2,
+                    name: "Marie'shusband",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+
+            ]
         },
         {
             id: 2,
             name: 'Morgan',
             password: 'admin',
-            picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/84c20033850498.56ba69ac290ea.png"
+            email: 'Morgan@admin.fr',
+            members: [
+                {
+                    id: 0,
+                    name: "BabyMorgan",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+                {
+                    id: 1,
+                    name: "BabyMorganDoe",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+                {
+                    id: 2,
+                    name: "Morgan'swife",
+                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                },
+
+            ]
         }
     ]
 }

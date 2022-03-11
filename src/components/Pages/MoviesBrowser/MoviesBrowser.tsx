@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {fetchMovies} from "../../redux/movies.reducer";
+import {useAppDispatch, useAppSelector} from "../../../redux/hooks";
+import {fetchMovies} from "../../../redux/movies.reducer";
 import './moviesBrowser.css';
-import Row from '../Rows/Row';
-import Banner from "../Banner/Banner";
+import Row from '../../Rows/Row';
+import Banner from "../../Banner/Banner";
 
 
 const MoviesBrowser = () => {

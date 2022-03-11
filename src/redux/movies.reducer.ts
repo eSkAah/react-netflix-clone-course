@@ -113,26 +113,6 @@ export const fetchMovies = () => (dispatch: AppDispatch) => {
             console.log(e);
         })
 
-
-    /*axios.get(apiRequests.mostPopularMoviesReq)
-        .then((res) => {
-            dispatch(setListPopular(res.data.results))
-        }),
-
-        axios.get(apiRequests.topRatedMoviesReq)
-            .then((res) => {
-                dispatch(setListTopRated(res.data.results))
-            }),
-
-        axios.get(apiRequests.mostPopularTvReq)
-            .then((res) => {
-                dispatch(setMostPopularTv(res.data.results))
-            }),
-
-        axios.get(apiRequests.topRatedTvReq)
-            .then((res) => {
-                dispatch(setTopRatedTvReq(res.data.results))
-            })*/
 }
 
 export default moviesSlice.reducer

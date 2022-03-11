@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home/home.css';
+import './Pages/Home/home.css';
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import translate from '../translation/translate';
