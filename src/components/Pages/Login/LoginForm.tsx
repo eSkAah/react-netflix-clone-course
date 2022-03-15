@@ -13,13 +13,22 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import translate from "../../../translation/translate";
+import {useAppSelector} from "../../../redux/hooks";
 
 const LoginForm = () => {
 
+    const usersList = useAppSelector((state) => state.user.userList);
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Logging...')
     }
+
+    const loginMatch = () => {
+        //    IF valeur de l'email et valeur du password dans les INPUT
+        //    == email dans usersList, et Password qui match
+        //    Alors tu stock en local les informations de l'utilisateur en question
+        //    Redirige vers la route /whoiswatching
+    };
 
     return (
         <div className='login-form'>
@@ -88,11 +97,8 @@ const LoginForm = () => {
                     </Box>
                 </Box>
             </Container>
-
         </div>
-
     )
-
 }
 
 export default LoginForm;

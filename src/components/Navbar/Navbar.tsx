@@ -27,8 +27,7 @@ const Navbar = () => {
     const handleLanguageChange = (e: any) => {
         dispacth(setAppLanguage(e.target.value))
     }
-
-
+    
     return (
         <AppBar className={isScrolled ? "notScrolled" : "scrolled"}
                 style={{background: 'transparent', boxShadow: 'none'}}>
@@ -36,42 +35,46 @@ const Navbar = () => {
                 <Grid container sx={{px: '25px'}}>
 
                     <Grid item xs={5} lg={1}>
-                        <a><Link to={'/'}><img className="logo" src={logo} alt="logo-netflix"/></Link></a>
+                        <Link to={'/'}><img className="logo" src={logo} alt="logo-netflix"/></Link>
                     </Grid>
 
-                    {isLogged && <Grid item lg={6}>
-                        <ul className='navigation-bar'>
-                            <li>
-                                {/* TODO: Change route if Logged / Not logged */}
-                                <Link to={'/movies-browser'}>Accueil</Link>
-                            </li>
-                            <li>
-                                <Link to={'/'}>Films</Link>
-                            </li>
-                            <li>
-                                <Link to={'/'}>Séries</Link>
-                            </li>
-                            <li>
-                                <Link to={'/'}>Nouveautés les plus regardées</Link>
-                            </li>
-                            <li>
-                                <Link to={'/'}>Ma liste</Link>
-                            </li>
-                        </ul>
-                    </Grid>}
-                    
-                    <Grid item sx={{ml: 'auto', mt: '30px'}}>
-                        <div className="left">
-                            <div className="select-menu">
-                                <LanguageIcon fontSize='inherit'/>
-                                <select value={appLanguage} onChange={handleLanguageChange}>
-                                    <option value="fr-FR">Français</option>
-                                    <option value="en-US">English</option>
-                                </select>
+                    {isLogged &&
+                        <Grid item lg={7}>
+                            <ul className='navigation-bar'>
+                                <li>
+                                    {/* TODO: Change route if Logged / Not logged */}
+                                    <Link to={'/movies-browser'}>Accueil</Link>
+                                </li>
+                                <li>
+                                    <Link to={'/'}>Films</Link>
+                                </li>
+                                <li>
+                                    <Link to={'/'}>Séries</Link>
+                                </li>
+                                <li>
+                                    <Link to={'/'}>Nouveautés les plus regardées</Link>
+                                </li>
+                                <li>
+                                    <Link to={'/'}>Ma liste</Link>
+                                </li>
+                            </ul>
+                        </Grid>}
+
+                    {!isLogged &&
+                        <Grid item sx={{ml: 'auto', mt: '30px'}}>
+                            <div className="left">
+                                <div className="select-menu">
+                                    <LanguageIcon fontSize='inherit'/>
+                                    <select value={appLanguage} onChange={handleLanguageChange}>
+                                        <option value="fr-FR">Français</option>
+                                        <option value="en-US">English</option>
+                                    </select>
+                                </div>
+                                <Button variant="contained" color="error"><Link to='/login'>S'identifier</Link></Button>
                             </div>
-                            <Button variant="contained" color="error"><Link to='/login'>S'identifier</Link></Button>
-                        </div>
-                    </Grid>
+                        </Grid>
+                    }
+
 
                 </Grid>
 

@@ -1,22 +1,23 @@
 import "./WiwUser.css";
 
-
 interface WiwUserProps {
-    userInfos: Object,
-    members: any[]
+    memberInfos: memberInfos
 }
 
-function WiwUser({userInfos, members}: WiwUserProps) {
+interface memberInfos {
+    id: number,
+    name: string,
+    picture: string
+}
 
-    console.log({userInfos})
 
-    console.log({members})
+function WiwUser({memberInfos}: WiwUserProps) {
 
 
     return (
         <div className="avatar user">
-            {/*<img src={picture} alt={user.name}/>*/}
-            {/*<span className="profile_username">{name}</span>*/}
+            {<img src={memberInfos.picture} alt={memberInfos.name}/>}
+            {<span className="profile_username">{memberInfos.name}</span>}
         </div>
     );
 }

@@ -10,7 +10,6 @@ import Login from "./components/Pages/Login/Login";
 import MoviesBrowser from "./components/Pages/MoviesBrowser/MoviesBrowser";
 import WhoIsWatching from "./components/Pages/WhoIsWatching/WhoIsWatching";
 
-
 const App = () => {
 
     const appLanguage = useAppSelector((state) => state.user.appLanguage)

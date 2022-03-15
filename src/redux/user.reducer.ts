@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const apiRequests = {
     mostPopularMoviesReq: `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR&page=1`,
     topRatedMoviesReq: `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`,
+
     mostPopularTvReq: `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`,
     topRatedTvReq: `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
 }
@@ -25,10 +26,10 @@ interface IUser {
     name: string,
     password: string,
     email: string,
-    members: IMembers[]
+    members: IMember[]
 }
 
-interface IMembers {
+interface IMember {
     id: number,
     name: string,
     picture: string,
@@ -52,60 +53,12 @@ const initialState: IUsers = {
                 {
                     id: 1,
                     name: "BabyJohnDoe",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                    picture: "https://ih1.redbubble.net/image.618427277.3222/flat,800x800,075,f.u2.jpg",
                 },
                 {
                     id: 2,
                     name: "John'sWife",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
-                },
-
-            ]
-        },
-        {
-            id: 1,
-            name: 'Marie',
-            password: 'admin',
-            email: 'Marie@admin.fr',
-            members: [
-                {
-                    id: 0,
-                    name: "BabyMarie",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
-                },
-                {
-                    id: 1,
-                    name: "BabyMarieDoe",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
-                },
-                {
-                    id: 2,
-                    name: "Marie'shusband",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
-                },
-
-            ]
-        },
-        {
-            id: 2,
-            name: 'Morgan',
-            password: 'admin',
-            email: 'Morgan@admin.fr',
-            members: [
-                {
-                    id: 0,
-                    name: "BabyMorgan",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
-                },
-                {
-                    id: 1,
-                    name: "BabyMorganDoe",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
-                },
-                {
-                    id: 2,
-                    name: "Morgan'swife",
-                    picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                    picture: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
                 },
 
             ]
