@@ -1,28 +1,26 @@
 import './WhoIsWatching.css';
 import React from "react";
-
 import {useAppDispatch, useAppSelector} from "../../../redux/hooks";
 import WiwUser from "./WiwUser/WiwUser";
-
 import Grid from '@mui/material/Grid';
 import {setIsLogged} from "../../../redux/user.reducer";
-
+import {useNavigate} from "react-router-dom";
 
 const WhoIsWatching = () => {
 
     const dispatch = useAppDispatch();
-
-    const isLogged = useAppSelector((state) => state.user.isLogged);
     const users = useAppSelector((state) => state.user.userList);
-    const members = users[0].members;
+    const connectedUserEmail = localStorage.getItem("email");
+    const userInfos = users.find(x => x.email === connectedUserEmail);
+    const members = userInfos?.members;
+    const navigate = useNavigate();
 
-    function handleIsLoggedChange() {
+    function handleIsLoggedChange(member: any) {
+        localStorage.setItem("member", member.name);
+        localStorage.setItem("picture", member.picture);
         dispatch(setIsLogged(true))
+        navigate('/movies');
     }
-
-    //TODO : Retirer les boutons de la Navbar quand connecté
-    //Rediriger vers la page MoviesBrower quand le click est fait
-    //Stocker les informations des membres dans le local storage
 
     return (
         <>
@@ -40,14 +38,12 @@ const WhoIsWatching = () => {
                   justifyContent="center"
                   spacing={2}
             >
-                {members.map((member, key) =>
-                    <Grid onClick={handleIsLoggedChange} key={key} item xs={10} sm={1}>
+                {members?.map((member, key) =>
+                    <Grid onClick={() => handleIsLoggedChange(member)} key={key} item xs={10} sm={1}>
                         <WiwUser memberInfos={member}/>
                     </Grid>
                 )}
             </Grid>
-
-
         </>
     )
 }

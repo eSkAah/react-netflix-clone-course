@@ -1,4 +1,5 @@
 import "./WiwUser.css";
+import {useNavigate} from "react-router-dom";
 
 interface WiwUserProps {
     memberInfos: memberInfos
@@ -10,9 +11,9 @@ interface memberInfos {
     picture: string
 }
 
-
 function WiwUser({memberInfos}: WiwUserProps) {
 
+    const navigate = useNavigate();
 
     return (
         <div className="avatar user">

@@ -2,8 +2,12 @@ h2 {
     color: #e5e5e5;
 }
 
-.row_poster {
+.row {
     width: 100%;
+}
+
+.row_poster {
+    /* width: 100%;*/
     object-fit: contain;
     max-height: 100px;
     transition: transform 500ms;
@@ -31,5 +35,9 @@ h2 {
 
 .row_posters::-webkit-scrollbar {
     display: none;
+}
+
+.swiper {
+    width: 1900px;
 }
 

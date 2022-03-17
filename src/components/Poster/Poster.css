@@ -1,0 +1,33 @@
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    height: 70%;
+    background-color: #181818;
+    border: 2px solid #000;
+    boxShadow: 24;
+    padding: 4px;
+    color: #e5e5e5;
+    overflow-y: scroll;
+}
+
+.modal::-webkit-scrollbar {
+    display: none;
+}
+
+.modal p {
+    font-size: 18px;
+    line-height: 27px;
+
+}
+
+.modal img {
+    width: 100%;
+    padding: 0;
+}
+
+.modal h1 {
+
+}

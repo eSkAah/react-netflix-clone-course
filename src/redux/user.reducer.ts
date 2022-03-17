@@ -33,6 +33,15 @@ interface IMember {
     id: number,
     name: string,
     picture: string,
+    wishlist: IMovie[]
+}
+
+interface IMovie {
+    id: number
+    name: string
+    poster_path: string
+    backdrop_path: string
+    overview?: string
 }
 
 const initialState: IUsers = {
@@ -41,30 +50,34 @@ const initialState: IUsers = {
     userList: [
         {
             id: 0,
-            name: 'John',
+            name: 'admin',
             password: 'admin',
-            email: 'John@admin.fr',
+            email: 'admin@admin.fr',
             members: [
                 {
                     id: 0,
-                    name: "BabyJohn",
+                    name: "BabyBuu",
                     picture: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png",
+                    wishlist: []
                 },
                 {
                     id: 1,
-                    name: "BabyJohnDoe",
+                    name: "BabyBouBou",
                     picture: "https://ih1.redbubble.net/image.618427277.3222/flat,800x800,075,f.u2.jpg",
+                    wishlist: []
                 },
                 {
                     id: 2,
                     name: "John'sWife",
                     picture: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+                    wishlist: []
                 },
 
             ]
         }
     ]
 }
+
 
 const setAppLanguageState = (state: IUsers, action: any) => {
     state.appLanguage = action.payload;

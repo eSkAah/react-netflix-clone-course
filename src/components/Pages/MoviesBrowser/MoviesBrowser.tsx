@@ -12,8 +12,8 @@ const MoviesBrowser = () => {
 
     const dispatch = useAppDispatch();
     const netflixOriginal = useAppSelector((state) => state.movies.listNetflixOriginal)
-    const popularMovies = useAppSelector((state) => state.movies.listPopular)
-    const topRatedMovies = useAppSelector((state) => state.movies.listTopRated)
+    const popularMovies = useAppSelector((state) => state.movies.listMoviesPopular)
+    const topRatedMovies = useAppSelector((state) => state.movies.listMoviesTopRated)
     const mostPopularTv = useAppSelector((state) => state.movies.listMostPopularTvReq)
     const topRatedTv = useAppSelector((state) => state.movies.listTopRatedTvReq)
     const isFetched = useAppSelector((state) => state.movies.isFetched)

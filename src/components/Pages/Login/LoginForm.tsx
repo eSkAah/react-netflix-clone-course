@@ -1,8 +1,5 @@
 import React from 'react'
-
-import {Link} from "react-router-dom";
 import './login.css'
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -13,22 +10,32 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import translate from "../../../translation/translate";
-import {useAppSelector} from "../../../redux/hooks";
+import {useFormControls} from "./useFormControls";
+import Button from "@mui/material/Button";
+
+
+const inputFieldValues = [
+    {
+        name: "email",
+        label: "E-mail",
+        id: "email"
+    },
+    {
+        name: "password",
+        label: "Password",
+        id: "password"
+    },
+
+];
 
 const LoginForm = () => {
 
-    const usersList = useAppSelector((state) => state.user.userList);
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    }
-
-    const loginMatch = () => {
-        //    IF valeur de l'email et valeur du password dans les INPUT
-        //    == email dans usersList, et Password qui match
-        //    Alors tu stock en local les informations de l'utilisateur en question
-        //    Redirige vers la route /whoiswatching
-    };
+    const {
+        handleInputValue,
+        handleFormSubmit,
+        formIsValid,
+        errors
+    } = useFormControls();
 
     return (
         <div className='login-form'>
@@ -43,30 +50,30 @@ const LoginForm = () => {
                     }}
                 >
                     <Typography component="h1" variant="h5">{translate('signin')}</Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
-                        <TextField
-                            color="info"
-                            variant="filled"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label={translate('email')}
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            margin="normal"
-                            variant="filled"
-                            required
-                            fullWidth
-                            name="password"
-                            label={translate('password')}
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
+
+                    <Box component="form" onSubmit={handleFormSubmit} noValidate sx={{mt: 1}}>
+                        {inputFieldValues.map((inputFieldValue, key) => {
+                            return (
+                                <TextField
+                                    key={key}
+                                    color="info"
+                                    onBlur={handleInputValue}
+                                    variant="filled"
+                                    margin="normal"
+                                    fullWidth
+                                    id={inputFieldValue.id}
+                                    label={inputFieldValue.name}
+                                    type={inputFieldValue.name == "password" ? "password" : "text"}
+                                    name={inputFieldValue.name}
+                                    onChange={handleInputValue}
+                                    {...(errors[inputFieldValue.name] && {
+                                        error: true,
+                                        helperText: errors[inputFieldValue.name]
+                                    })}
+                                />
+                            );
+                        })}
+
                         <FormControlLabel
                             control={<Checkbox value="remember"/>}
                             label={translate('rememberMe')}
@@ -78,10 +85,10 @@ const LoginForm = () => {
                             color="error"
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
-                        ><Link to={'/whoiswatching'}>
+                        >
                             {translate('signin')}
-                        </Link>
                         </Button>
+
                         <Grid container>
                             <Grid item xs>
                                 <MuiLink href="#" variant="body2">
@@ -94,6 +101,7 @@ const LoginForm = () => {
                                 </MuiLink>
                             </Grid>
                         </Grid>
+
                     </Box>
                 </Box>
             </Container>

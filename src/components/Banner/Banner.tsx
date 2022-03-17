@@ -9,6 +9,8 @@ import Grid from "@mui/material/Grid";
 interface IBanner {
     title: string,
     movies: IMovie[]
+
+
 }
 
 interface IMovie {
@@ -16,10 +18,11 @@ interface IMovie {
     title: string,
     name?: string,
     original_name?: string,
-    overview: string,
+    overview?: string,
     poster_path: string,
     backdrop_path: string,
 }
+
 
 const Banner = ({title, movies}: IBanner) => {
 
@@ -81,7 +84,8 @@ const Banner = ({title, movies}: IBanner) => {
                 </Grid>
 
                 <h3 className="banner_description">
-                    {maxDescriptionLength(movie.overview, 200)}
+                    {movie.overview == undefined ? "" : "UNDEFINED"}
+                    {maxDescriptionLength(movie.overview!, 200)}
                 </h3>
             </div>
             <div className="banner_linear_transition"/>

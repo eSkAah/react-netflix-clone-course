@@ -12,10 +12,11 @@ import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setAppLanguage} from "../../redux/user.reducer";
 import Grid from "@mui/material/Grid";
 
+
 const Navbar = () => {
 
+    const dispatch = useAppDispatch();
     const [isScrolled, setIsScrolled] = useState<boolean>(true);
-    const dispacth = useAppDispatch();
     const appLanguage = useAppSelector((state) => state.user.appLanguage);
     const isLogged = useAppSelector((state) => state.user.isLogged);
 
@@ -24,10 +25,11 @@ const Navbar = () => {
         return () => (window.onscroll = null);
     };
 
+
     const handleLanguageChange = (e: any) => {
-        dispacth(setAppLanguage(e.target.value))
+        dispatch(setAppLanguage(e.target.value))
     }
-    
+
     return (
         <AppBar className={isScrolled ? "notScrolled" : "scrolled"}
                 style={{background: 'transparent', boxShadow: 'none'}}>
@@ -35,7 +37,8 @@ const Navbar = () => {
                 <Grid container sx={{px: '25px'}}>
 
                     <Grid item xs={5} lg={1}>
-                        <Link to={'/'}><img className="logo" src={logo} alt="logo-netflix"/></Link>
+                        <Link to={isLogged ? '/movies' : '/'}><img className="logo" src={logo}
+                                                                   alt="logo-netflix"/></Link>
                     </Grid>
 
                     {isLogged &&
@@ -43,24 +46,33 @@ const Navbar = () => {
                             <ul className='navigation-bar'>
                                 <li>
                                     {/* TODO: Change route if Logged / Not logged */}
-                                    <Link to={'/movies-browser'}>Accueil</Link>
+                                    <Link to={'/movies'}>Accueil</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/'}>Films</Link>
+                                    <Link to={'/movies'}>Films</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/'}>Séries</Link>
+                                    <Link to={'/tvshow'}>Séries</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/'}>Nouveautés les plus regardées</Link>
+                                    <Link to={'/latest'}>Nouveautés les plus regardées</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/'}>Ma liste</Link>
+                                    <Link to={'/mylist'}>Ma liste</Link>
                                 </li>
                             </ul>
                         </Grid>}
 
-                    {!isLogged &&
+                    {isLogged ?
+
+                        <Grid item sx={{ml: 'auto', mt: '30px'}}>
+                            <div className="nav_icon">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"/>
+                            </div>
+                        </Grid>
+
+                        :
+
                         <Grid item sx={{ml: 'auto', mt: '30px'}}>
                             <div className="left">
                                 <div className="select-menu">
