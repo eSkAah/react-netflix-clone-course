@@ -5,6 +5,8 @@ import WiwUser from "./WiwUser/WiwUser";
 import Grid from '@mui/material/Grid';
 import {setIsLogged} from "../../../redux/user.reducer";
 import {useNavigate} from "react-router-dom";
+import translate from "../../../translation/translate";
+
 
 const WhoIsWatching = () => {
 
@@ -16,7 +18,7 @@ const WhoIsWatching = () => {
     const navigate = useNavigate();
 
     function handleIsLoggedChange(member: any) {
-        localStorage.setItem("member", member.name);
+        localStorage.setItem("member", member.id);
         localStorage.setItem("picture", member.picture);
         dispatch(setIsLogged(true))
         navigate('/movies');
@@ -31,7 +33,7 @@ const WhoIsWatching = () => {
                       fontSize: '30px',
                       mt: '7%'
                   }}>
-                <h1>Qui est-ce ?</h1>
+                <h1>{translate('who_is_watching')}</h1>
             </Grid>
             <Grid container
                   alignItems="center"

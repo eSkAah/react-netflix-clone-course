@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Poster from "../../Poster/Poster";
+import React from 'react';
 
 interface IMovie {
     id: number
@@ -11,22 +10,25 @@ interface IMovie {
 
 const MyList = () => {
 
-    const localData = localStorage.getItem("member")
-    const member = JSON.parse(localData!);
-    const wishMovies = member.wishlist;
+    const localUser = localStorage.getItem("user");
+    const localMember = localStorage.getItem("member");
+    let memberId: string;
+    let user;
+    let member_infos;
+    let wishlist = [];
+    
+    if (localUser && localMember) {
+        user = JSON.parse(localUser);
+        memberId = JSON.parse(localMember);
+        member_infos = user.members.filter((member: any) => member.id === memberId)[0];
 
-    const [wish, setWhish] = useState<IMovie[]>(wishMovies);
+        console.log(member_infos);
 
-    console.log(wish);
+    }
+
+
     return (
-
-        <div>
-            {wish.map((movie, key) => {
-                <Poster isLarge={false} movieInfo={movie}/>
-
-            })}
-        </div>
-
+        <h1>MYLIST</h1>
 
     )
 }

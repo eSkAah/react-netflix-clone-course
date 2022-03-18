@@ -19,11 +19,11 @@ const App = () => {
     const appLanguage = useAppSelector((state) => state.user.appLanguage)
     const isLogged = useAppSelector((state) => state.user.isLogged);
     const localData = localStorage.getItem("email");
-    
+
     return (
         <>
-            <Navbar/>
             <Il8nProvider locale={appLanguage}>
+                <Navbar/>
                 <Routes>
                     <Route path={'/'} element={<Home/>}/>
                     <Route path='/login' element={<Login/>}/>

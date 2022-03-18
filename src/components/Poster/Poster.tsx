@@ -6,6 +6,9 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import Grid from "@mui/material/Grid";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import translate from "../../translation/translate";
+import Button from "@mui/material/Button";
 
 interface IPoster {
     movieInfo: IPosterMovie,
@@ -55,7 +58,24 @@ const Poster = ({movieInfo, isLarge}: IPoster) => {
                             <img src={`${imageBaseUrl}${movieInfo.backdrop_path}`}
                                  alt={movieInfo.name}/>
                         </Grid>
+                        <Grid>
+                            <Button size="large"
+                                    startIcon={<PlayArrowIcon/>}
+                                    variant="contained"
+                                    sx={{
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        fontWeight: 'bold',
+                                        '&:hover': {
+                                            backgroundColor: 'rgb(133, 133, 133)'
+                                        }
+                                    }}>{translate('play')}</Button>
+                        </Grid>
+
+
                         <h1>{movieInfo.name}</h1>
+
+
                         <Typography id="transition-modal-description" sx={{mt: 2}}>
                             <p>{maxDescriptionLength(movieInfo.overview!, 300)}</p>
                         </Typography>

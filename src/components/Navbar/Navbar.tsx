@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import translate from "../../translation/translate";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import logo from "../../assets/netflix-logo.png";
@@ -7,11 +7,9 @@ import Button from "@mui/material/Button";
 import LanguageIcon from "@mui/icons-material/Language";
 import './navbar.css'
 import {Link} from "react-router-dom";
-
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setAppLanguage} from "../../redux/user.reducer";
 import Grid from "@mui/material/Grid";
-
 
 const Navbar = () => {
 
@@ -24,7 +22,6 @@ const Navbar = () => {
         window.scrollY !== 0 ? setIsScrolled(false) : setIsScrolled(true)
         return () => (window.onscroll = null);
     };
-
 
     const handleLanguageChange = (e: any) => {
         dispatch(setAppLanguage(e.target.value))
@@ -46,19 +43,19 @@ const Navbar = () => {
                             <ul className='navigation-bar'>
                                 <li>
                                     {/* TODO: Change route if Logged / Not logged */}
-                                    <Link to={'/movies'}>Accueil</Link>
+                                    <Link to={'/movies'}>{translate('home')}</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/movies'}>Films</Link>
+                                    <Link to={'/movies'}>{translate('movies')}</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/tvshow'}>Séries</Link>
+                                    <Link to={'/tvshow'}>{translate('tvshow')}</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/latest'}>Nouveautés les plus regardées</Link>
+                                    <Link to={'/latest'}>{translate('latest')}</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/mylist'}>Ma liste</Link>
+                                    <Link to={'/mylist'}>{translate('wishlist')}</Link>
                                 </li>
                             </ul>
                         </Grid>}
@@ -82,7 +79,7 @@ const Navbar = () => {
                                         <option value="en-US">English</option>
                                     </select>
                                 </div>
-                                <Button variant="contained" color="error"><Link to='/login'>S'identifier</Link></Button>
+                                <Button variant="contained" color="error"><Link to='/login'>{translate('signin')}</Link></Button>
                             </div>
                         </Grid>
                     }

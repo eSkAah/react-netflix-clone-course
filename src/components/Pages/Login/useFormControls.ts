@@ -48,6 +48,8 @@ export const useFormControls = () => {
     const handleFormSubmit = async (e: any) => {
         e.preventDefault();
         if (formIsValid() && usersList.some(el => el.email === values.email)) {
+            const userObject = usersList.filter(el => el.email === values.email)[0];
+            localStorage.setItem("user", JSON.stringify(userObject));
             localStorage.setItem("email", values.email)
             navigate('/whoiswatching')
         }

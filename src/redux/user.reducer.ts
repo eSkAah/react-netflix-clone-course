@@ -44,6 +44,7 @@ interface IMovie {
     overview?: string
 }
 
+
 const initialState: IUsers = {
     isLogged: false,
     appLanguage: "fr-FR",
@@ -99,12 +100,12 @@ export const userSlice = createSlice({
         setAppLanguage: (state, action) => setAppLanguageState(state, action),
         setUserList: (state, action) => setUserListState(state, action),
         setIsLogged: (state, action) => setIsLoggedState(state, action),
-
     }
 })
 
 //Dispatchable
 export const {setAppLanguage, setUserList, setIsLogged} = userSlice.actions;
+
 
 export default userSlice.reducer
 
