@@ -18,7 +18,7 @@ interface IRow {
 
 interface IMovie {
     id: number
-    name: string
+    title: string
     poster_path: string
     backdrop_path: string
     overview?: string
@@ -26,7 +26,6 @@ interface IMovie {
 
 
 const Row = ({title, movies, isLarge}: IRow,) => {
-
 
     return (
         <div className="swiper">
@@ -40,7 +39,6 @@ const Row = ({title, movies, isLarge}: IRow,) => {
                 navigation
                 pagination={{clickable: true}}
                 scrollbar={{draggable: true}}
-                onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
             >
                 {movies.map((movie, key) =>

@@ -69,7 +69,7 @@ const Banner = ({title, movies}: IBanner) => {
                                     }
                                 }}>{translate('play')}</Button>
                     </Grid>
-                    <Grid item xs={6} md={3} lg={2}>
+                    <Grid item xs={6} md={3} lg={2} sx={{marginLeft: "1%"}}>
                         <Button size="large"
                                 startIcon={<InfoIcon/>}
                                 variant="contained"

@@ -11,12 +11,34 @@ import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setAppLanguage} from "../../redux/user.reducer";
 import Grid from "@mui/material/Grid";
 
+interface IMember {
+    id: number,
+    name: string,
+    picture: string,
+    wishlist: []
+}
+
 const Navbar = () => {
 
     const dispatch = useAppDispatch();
     const [isScrolled, setIsScrolled] = useState<boolean>(true);
     const appLanguage = useAppSelector((state) => state.user.appLanguage);
     const isLogged = useAppSelector((state) => state.user.isLogged);
+
+    const [member, setMember] = useState<IMember>({id: 0, name: "", picture: "", wishlist: []});
+    let connectedMemberInfos;
+
+    console.log(member.name)
+    if (isLogged && member.name != "") {
+        let userSto = localStorage.getItem("user") as string;
+        let memberSto = localStorage.getItem("member") as string;
+        if (userSto) {
+            let user = JSON.parse(userSto);
+            let memberId = JSON.parse(memberSto);
+            setMember(user.members[memberId])
+            console.log(member);
+        }
+    }
 
     window.onscroll = () => {
         window.scrollY !== 0 ? setIsScrolled(false) : setIsScrolled(true)
@@ -64,7 +86,8 @@ const Navbar = () => {
 
                         <Grid item sx={{ml: 'auto', mt: '30px'}}>
                             <div className="nav_icon">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"/>
+                                <img src={member.picture}
+                                     alt="Hello"/>
                             </div>
                         </Grid>
 

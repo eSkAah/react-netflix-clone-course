@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import {useAppDispatch, useAppSelector} from "./redux/hooks";
+import {useAppSelector} from "./redux/hooks";
 import {Route, Routes} from 'react-router-dom'
 import {Il8nProvider} from './translation';
 
@@ -15,10 +15,7 @@ import MyList from "./components/Pages/MyList/MyList";
 
 const App = () => {
 
-    const dispatch = useAppDispatch();
     const appLanguage = useAppSelector((state) => state.user.appLanguage)
-    const isLogged = useAppSelector((state) => state.user.isLogged);
-    const localData = localStorage.getItem("email");
 
     return (
         <>

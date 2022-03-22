@@ -47,11 +47,16 @@ export const useFormControls = () => {
 
     const handleFormSubmit = async (e: any) => {
         e.preventDefault();
-        if (formIsValid() && usersList.some(el => el.email === values.email)) {
+        if (formIsValid() &&
+            usersList.some(el => el.email === values.email &&
+                usersList.some(el => el.password === values.password))) {
             const userObject = usersList.filter(el => el.email === values.email)[0];
             localStorage.setItem("user", JSON.stringify(userObject));
             localStorage.setItem("email", values.email)
             navigate('/whoiswatching')
+        } else {
+            console.log("ERRROR DE LOGIN")
+            setErrors("Login & password error")
         }
     }
 

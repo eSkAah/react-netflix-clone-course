@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import translate from "../../translation/translate";
 import Button from "@mui/material/Button";
+import InfoIcon from "@mui/icons-material/Info";
 
 interface IPoster {
     movieInfo: IPosterMovie,
@@ -17,7 +18,7 @@ interface IPoster {
 
 interface IPosterMovie {
     id: number
-    name: string
+    title: string
     poster_path: string
     backdrop_path: string
     overview?: string
@@ -31,6 +32,7 @@ const Poster = ({movieInfo, isLarge}: IPoster) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+
     function maxDescriptionLength(description: string, length: number) {
         return description?.length > length ? description.substring(0, length - 1) + "..." : description
     }
@@ -39,7 +41,7 @@ const Poster = ({movieInfo, isLarge}: IPoster) => {
         <>
             <img onClick={handleOpen} className={`row_poster ${isLarge && "row_poster_large"}`}
                  src={`${imageBaseUrl}${isLarge ? movieInfo.poster_path : movieInfo.backdrop_path}`}
-                 alt={movieInfo.name}/>
+                 alt={movieInfo.title}/>
 
             <Modal
                 aria-labelledby="transition-modal-title"
@@ -54,11 +56,19 @@ const Poster = ({movieInfo, isLarge}: IPoster) => {
             >
                 <Fade in={open}>
                     <Box className="modal">
+
                         <Grid item xs={12}>
                             <img src={`${imageBaseUrl}${movieInfo.backdrop_path}`}
-                                 alt={movieInfo.name}/>
+                                 alt={movieInfo.title}/>
                         </Grid>
-                        <Grid>
+
+                        <Grid item sx={{
+                            position: "absolute",
+                            bottom: "30%",
+                            display: "flex",
+                            marginLeft: "3%",
+                            width: "100%"
+                        }}>
                             <Button size="large"
                                     startIcon={<PlayArrowIcon/>}
                                     variant="contained"
@@ -69,16 +79,33 @@ const Poster = ({movieInfo, isLarge}: IPoster) => {
                                         '&:hover': {
                                             backgroundColor: 'rgb(133, 133, 133)'
                                         }
-                                    }}>{translate('play')}</Button>
+                                    }}>{translate('play')}
+                            </Button>
+
+                            <Button
+                                startIcon={<InfoIcon/>}
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    fontWeight: 'bold',
+                                    marginLeft: "5%",
+                                    '&:hover': {
+                                        backgroundColor: 'rgb(133, 133, 133)'
+                                    }
+                                }}>{translate('more_infos')}
+                            </Button>
+                        </Grid>
+                        <h1>{movieInfo.title}</h1>
+
+
+                        <Grid item>
+                            <Typography id="transition-modal-description" sx={{mt: 2}}>
+                                {maxDescriptionLength(movieInfo.overview!, 300)}
+                            </Typography>
                         </Grid>
 
 
-                        <h1>{movieInfo.name}</h1>
-
-
-                        <Typography id="transition-modal-description" sx={{mt: 2}}>
-                            <p>{maxDescriptionLength(movieInfo.overview!, 300)}</p>
-                        </Typography>
                     </Box>
                 </Fade>
 
