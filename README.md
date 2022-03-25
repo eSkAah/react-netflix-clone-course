@@ -6,26 +6,26 @@ Login : admin@admin.fr | Password: admin
 
 ## Features
 
-- Login [X]
+- Login [X] Gestion du formulaire un peu approfondis
 - Who's watching[X]
-    - Create new profile
-    - Edit profile
-    - Delete profile
+    - Create new profile[-]
+    - Edit profile [-]
+    - Delete profile [-]
 - Home page[X]
     - Section by type[X]
     - Top shows[X]
 - My List (care, this is scoped to a profile)
-    - Add to my List
-    - Remove from my List
+    - Add to my List [-]
+    - Remove from my List [-]
 - Display details of a show[X]
-    - Movie: description, actors, cover, etc
-    - Series: list of episodes, description, actors, cover,
+    - Movie: description, actors, cover, etc [X]
+    - Series: list of episodes, description, actors, cover,[-]
 - Search
 
 ### To go further
 
 - Internationalization[X]
-- Display trailers from youtube
+- Display trailers from youtube[X] Fait uniquement pour les Films et pas les séries (Manque temps)
 
 ## How to get data
 

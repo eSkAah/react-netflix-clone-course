@@ -11,7 +11,8 @@ const apiRequests = {
     latestMoviesReq: `https://api.themoviedb.org/3/movie/latest?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`,
     mostPopularTvReq: `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`,
     topRatedTvReq: `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`,
-    latestTvReq: `https://api.themoviedb.org/3/tv/latest?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    latestTvReq: `https://api.themoviedb.org/3/tv/latest?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`,
+
 }
 
 // Var dans le redux loading Boolean
@@ -153,6 +154,7 @@ export const fetchMovies = () => (dispatch: AppDispatch) => {
         })
 
 }
+
 
 export default moviesSlice.reducer
 
